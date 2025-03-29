@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback | Zer0e-Waste</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .feedback-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .rating {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .star {
+            font-size: 1.5rem;
+            color: #ddd;
+            cursor: pointer;
+        }
+        .star.active {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <a href="client.html"><img src="../assets/icons/back-arrow.svg" alt="Back"></a>
+                <h1>Feedback</h1>
+            </div>
+        </header>
+        
+        <main class="dashboard-main">
+            <div class="glass-card">
+                <h2>Share Your Experience</h2>
+                
+                <div class="feedback-card">
+                    <h3>Recent Pickup #EW12345</h3>
+                    <div class="rating" id="ratingStars">
+                        <span class="star" data-rating="1">★</span>
+                        <span class="star" data-rating="2">★</span>
+                        <span class="star" data-rating="3">★</span>
+                        <span class="star" data-rating="4">★</span>
+                        <span class="star" data-rating="5">★</span>
+                    </div>
+                    <textarea placeholder="Tell us about your experience..." rows="4" style="width: 100%; padding: 1rem;"></textarea>
+                    <button class="primary-button" style="margin-top: 1rem;">Submit Feedback</button>
+                </div>
+                
+                <h3 style="margin-top: 2rem;">Community Feedback (290 Likes)</h3>
+                <div class="feedback-card">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <img src="../assets/images/user1.jpg" alt="User" style="width: 40px; height: 40px; border-radius: 50%;">
+                        <div>
+                            <h4>Rahul Sharma</h4>
+                            <div style="color: gold;">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"The E-Man arrived right on time and was very professional. Great service!"</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <button class="secondary-button">Like (142)</button>
+                        <button class="secondary-button">Reply</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Star rating functionality
+        const stars = document.querySelectorAll('.star');
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                const rating = this.getAttribute('data-rating');
+                stars.forEach((s, index) => {
+                    s.classList.toggle('active', index < rating);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

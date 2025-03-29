@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earnings | Zer0e-Waste E-Man</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="eman.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Earnings-specific styles */
+        .earnings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .time-period-selector {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .time-period-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: #f5f5f5;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        
+        .time-period-btn.active {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .earnings-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .earning-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .earning-card h3 {
+            font-size: 0.95rem;
+            color: #78909C;
+            margin-bottom: 0.5rem;
+        }
+        
+        .earning-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2E7D32;
+        }
+        
+        .earning-subtext {
+            font-size: 0.85rem;
+            color: #78909C;
+            margin-top: 0.25rem;
+        }
+        
+        .transactions-list {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+        
+        .transaction-info h4 {
+            font-size: 1rem;
+            color: #37474F;
+            margin-bottom: 0.25rem;
+        }
+        
+        .transaction-info p {
+            font-size: 0.85rem;
+            color: #78909C;
+        }
+        
+        .transaction-amount {
+            font-weight: 600;
+            color: #2E7D32;
+        }
+        
+        .transaction-amount.negative {
+            color: #E53935;
+        }
+        
+        .withdraw-btn {
+            display: block;
+            width: 100%;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .withdraw-btn:hover {
+            background: #3d8b40;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        
+        .empty-state img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 1rem;
+            opacity: 0.6;
+        }
+        
+        .empty-state p {
+            color: #78909C;
+        }
+        
+        @media (max-width: 768px) {
+            .earnings-overview {
+                grid-template-columns: 1fr;
+            }
+            
+            .earnings-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <a href="eman.html"><img src="download10.png" alt="Back"></a>
+                <h1>Earnings</h1>
+            </div>
+            <div class="header-right">
+                <div class="profile-icon" id="profileDropdownBtn">
+                    <img src="../assets/icons/eman-profile-icon.svg" alt="Profile">
+                </div>
+            </div>
+        </header>
+        
+        <main class="dashboard-main">
+            <div class="earnings-header">
+                <h2>Your Earnings Summary</h2>
+                <div class="date-range">
+                    <span id="currentDateRange">June 1-30, 2023</span>
+                </div>
+            </div>
+            
+            <div class="time-period-selector">
+                <button class="time-period-btn active" data-period="week">This Week</button>
+                <button class="time-period-btn" data-period="month">This Month</button>
+                <button class="time-period-btn" data-period="year">This Year</button>
+                <button class="time-period-btn" data-period="all">All Time</button>
+            </div>
+            
+            <div class="earnings-overview">
+                <div class="earning-card">
+                    <h3>Total Earnings</h3>
+                    <p class="earning-value">₹12,450</p>
+                    <p class="earning-subtext">+₹2,340 from last period</p>
+                </div>
+                
+                <div class="earning-card">
+                    <h3>Completed Pickups</h3>
+                    <p class="earning-value">48</p>
+                    <p class="earning-subtext">+12 from last period</p>
+                </div>
+                
+                <div class="earning-card">
+                    <h3>Average per Pickup</h3>
+                    <p class="earning-value">₹260</p>
+                    <p class="earning-subtext">+₹15 from last period</p>
+                </div>
+                
+                <div class="earning-card">
+                    <h3>Available for Withdrawal</h3>
+                    <p class="earning-value">₹8,720</p>
+                    <p class="earning-subtext">Last withdrawal: Jun 15</p>
+                </div>
+            </div>
+            
+            <h3 style="margin-bottom: 1rem;">Recent Transactions</h3>
+            
+            <div class="transactions-list">
+                <div class="transaction-item">
+                    <div class="transaction-info">
+                        <h4>Pickup #EW12458</h4>
+                        <p>June 28, 2023 • 2:45 PM</p>
+                    </div>
+                    <div class="transaction-amount">+₹320</div>
+                </div>
+                
+                <div class="transaction-item">
+                    <div class="transaction-info">
+                        <h4>Pickup #EW12452</h4>
+                        <p>June 28, 2023 • 11:30 AM</p>
+                    </div>
+                    <div class="transaction-amount">+₹280</div>
+                </div>
+                
+                <div class="transaction-item">
+                    <div class="transaction-info">
+                        <h4>Withdrawal</h4>
+                        <p>June 25, 2023 • Processed</p>
+                    </div>
+                    <div class="transaction-amount negative">-₹5,000</div>
+                </div>
+                
+                <div class="transaction-item">
+                    <div class="transaction-info">
+                        <h4>Pickup #EW12448</h4>
+                        <p>June 25, 2023 • 9:15 AM</p>
+                    </div>
+                    <div class="transaction-amount">+₹350</div>
+                </div>
+                
+                <div class="transaction-item">
+                    <div class="transaction-info">
+                        <h4>Bonus: Weekly Streak</h4>
+                        <p>June 24, 2023 • Bonus</p>
+                    </div>
+                    <div class="transaction-amount">+₹500</div>
+                </div>
+            </div>
+            
+            <button class="withdraw-btn" id="withdrawBtn">
+                Withdraw Earnings
+            </button>
+        </main>
+    </div>
+
+    <script src="eman.js"></script>
+    <script>
+        // Initialize earnings page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Time period selector
+            const periodBtns = document.querySelectorAll('.time-period-btn');
+            periodBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    periodBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    loadEarningsData(this.dataset.period);
+                });
+            });
+            
+            // Withdraw button
+            const withdrawBtn = document.getElementById('withdrawBtn');
+            if (withdrawBtn) {
+                withdrawBtn.addEventListener('click', function() {
+                    initiateWithdrawal();
+                });
+            }
+            
+            // Load initial data
+            loadEarningsData('week');
+        });
+        
+        function loadEarningsData(period) {
+            console.log(`Loading earnings data for: ${period}`);
+            // In a real app, this would fetch from your API
+            // For now, we'll just simulate with sample data
+            
+            // Update date range display
+            const dateRange = document.getElementById('currentDateRange');
+            if (dateRange) {
+                const ranges = {
+                    'week': 'June 25-30, 2023',
+                    'month': 'June 1-30, 2023',
+                    'year': '2023',
+                    'all': 'All Time'
+                };
+                dateRange.textContent = ranges[period] || ranges['week'];
+            }
+            
+            // Show loading state
+            showLoading(true);
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Update UI with new data
+                showLoading(false);
+                
+                // Show success toast
+                showToast(`Showing earnings for ${period}`, 'success');
+            }, 800);
+        }
+        
+        function initiateWithdrawal() {
+            // In a real app, this would open a withdrawal modal
+            console.log('Initiating withdrawal...');
+            showToast('Withdrawal request initiated. Processing may take 1-2 business days.', 'success');
+            
+            // Simulate withdrawal processing
+            const withdrawBtn = document.getElementById('withdrawBtn');
+            if (withdrawBtn) {
+                withdrawBtn.disabled = true;
+                withdrawBtn.textContent = 'Processing...';
+                
+                setTimeout(() => {
+                    withdrawBtn.disabled = false;
+                    withdrawBtn.textContent = 'Withdraw Earnings';
+                }, 3000);
+            }
+        }
+        
+        function showLoading(show = true) {
+            // Implement your loading indicator
+            console.log(show ? 'Showing loading...' : 'Hiding loading...');
+        }
+        
+        function showToast(message, type = 'success') {
+            // Implement your toast notification
+            console.log(`[${type}] ${message}`);
+        }
+    </script>
+</body>
+</html>

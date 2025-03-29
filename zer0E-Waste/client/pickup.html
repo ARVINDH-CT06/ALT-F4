@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pickup Request | Zer0e-Waste</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pickup-form {
+            margin-top: 2rem;
+        }
+        
+        .ewaste-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .ewaste-type {
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .ewaste-type.selected {
+            border-color: var(--primary-color);
+            background: #f0f7f0;
+        }
+        
+        .ewaste-type img {
+            width: 40px;
+            height: auto;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <a href="client.html"><img src="download9.png" alt="Back" style="width: 24px; margin-right: 1rem;"></a>
+                <h1>Pickup Request</h1>
+            </div>
+            <div class="header-right">
+                <div class="profile-icon" id="profileDropdownBtn">
+                    <img src="91ad0ce4-9c68-4209-b4dc-041400a19d3b.jpg" alt="Profile">
+                </div>
+            </div>
+        </header>
+        
+        <main class="dashboard-main">
+            <div class="glass-card">
+                <h2 style="margin-bottom: 1.5rem;">Create New Pickup Request</h2>
+                
+                <div id="map"></div>
+                
+                <form class="pickup-form" id="pickupForm">
+                    <div class="form-group">
+                        <label for="pickupAddress">Pickup Address</label>
+                        <textarea id="pickupAddress" name="pickupAddress" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Select E-Waste Types</label>
+                        <div class="ewaste-types">
+                            <div class="ewaste-type" data-type="batteries">
+                                <img src="download7.jpg" alt="Batteries">
+                                <p>Batteries</p>
+                            </div>
+                            <div class="ewaste-type" data-type="phones">
+                                <img src="download8.jpg" alt="Phones">
+                                <p>Phones</p>
+                            </div>
+                            <div class="ewaste-type" data-type="laptops">
+                                <img src="download6.jpg" alt="Laptops">
+                                <p>Laptops</p>
+                            </div>
+                            <div class="ewaste-type" data-type="tvs">
+                                <img src="../assets/icons/tv.svg" alt="TVs">
+                                <p>TVs</p>
+                            </div>
+                            <div class="ewaste-type" data-type="appliances">
+                                <img src="../assets/icons/appliance.svg" alt="Appliances">
+                                <p>Appliances</p>
+                            </div>
+                            <div class="ewaste-type" data-type="other">
+                                <img src="../assets/icons/other.svg" alt="Other">
+                                <p>Other</p>
+                            </div>
+                        </div>
+                        <input type="hidden" id="ewasteTypes" name="ewasteTypes">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pickupDate">Preferred Pickup Date</label>
+                        <input type="date" id="pickupDate" name="pickupDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pickupTime">Preferred Time</label>
+                        <select id="pickupTime" name="pickupTime" required>
+                            <option value="">Select time slot</option>
+                            <option value="morning">Morning (9AM - 12PM)</option>
+                            <option value="afternoon">Afternoon (1PM - 5PM)</option>
+                            <option value="evening">Evening (6PM - 8PM)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="specialInstructions">Special Instructions</label>
+                        <textarea id="specialInstructions" name="specialInstructions" rows="2"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="primary-button">Submit Pickup Request</button>
+                </form>
+            </div>
+            
+            <div class="glass-card" style="margin-top: 2rem;">
+                <h2 style="margin-bottom: 1.5rem;">Your Active Pickups</h2>
+                <div class="pickup-list">
+                    <div class="pickup-item">
+                        <div class="pickup-info">
+                            <h3>Pickup #EW12345</h3>
+                            <p><strong>Status:</strong> <span class="status-pending">Pending</span></p>
+                            <p><strong>Date:</strong> June 15, 2023</p>
+                            <p><strong>Items:</strong> Laptops, Phones</p>
+                        </div>
+                        <div class="pickup-actions">
+                            <button class="secondary-button">Track</button>
+                            <button class="secondary-button">Cancel</button>
+                        </div>
+                    </div>
+                    
+                    <div class="pickup-item">
+                        <div class="pickup-info">
+                            <h3>Pickup #EW12346</h3>
+                            <p><strong>Status:</strong> <span class="status-scheduled">Scheduled</span></p>
+                            <p><strong>Date:</strong> June 18, 2023</p>
+                            <p><strong>Items:</strong> TVs, Appliances</p>
+                        </div>
+                        <div class="pickup-actions">
+                            <button class="secondary-button">Track</button>
+                            <button class="secondary-button">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="../js/leaflet-map.js"></script>
+    <script>
+        // E-Waste type selection
+        const ewasteTypes = document.querySelectorAll('.ewaste-type');
+        const ewasteTypesInput = document.getElementById('ewasteTypes');
+        let selectedTypes = [];
+        
+        ewasteTypes.forEach(type => {
+            type.addEventListener('click', () => {
+                const typeValue = type.getAttribute('data-type');
+                
+                if (type.classList.contains('selected')) {
+                    type.classList.remove('selected');
+                    selectedTypes = selectedTypes.filter(t => t !== typeValue);
+                } else {
+                    type.classList.add('selected');
+                    selectedTypes.push(typeValue);
+                }
+                
+                ewasteTypesInput.value = selectedTypes.join(',');
+            });
+        });
+        
+        // Initialize map (this would be in leaflet-map.js)
+        function initPickupMap() {
+            const map = L.map('map').setView([11.0168, 76.9558], 13); // Coimbatore coordinates
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add random marker for E-Man location
+            const emanLat = 11.0168 + (Math.random() * 0.02 - 0.01);
+            const emanLng = 76.9558 + (Math.random() * 0.02 - 0.01);
+            
+            const emanIcon = L.icon({
+                iconUrl: '../assets/icons/eman-marker.png',
+                iconSize: [40, 40],
+                iconAnchor: [20, 40]
+            });
+            
+            L.marker([emanLat, emanLng], {icon: emanIcon})
+                .addTo(map)
+                .bindPopup('E-Man will arrive here')
+                .openPopup();
+            
+            // Add user's location marker
+            const userMarker = L.circleMarker([11.0168, 76.9558], {
+                radius: 8,
+                fillColor: "#4CAF50",
+                color: "#fff",
+                weight: 2,
+                opacity: 1,
+                fillOpacity: 0.8
+            }).addTo(map).bindPopup('Your location');
+            
+            // Add line between user and E-Man
+            const line = L.polyline([
+                [11.0168, 76.9558],
+                [emanLat, emanLng]
+            ], {
+                color: '#4CAF50',
+                dashArray: '10, 10'
+            }).addTo(map);
+        }
+        
+        // Initialize map when page loads
+        document.addEventListener('DOMContentLoaded', initPickupMap);
+    </script>
+</body>
+</html>

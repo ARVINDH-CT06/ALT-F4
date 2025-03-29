@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pickup Requests | Zer0e-Waste</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="eman.css">
+    <style>
+        #emanMap {
+            height: 400px;
+            width: 100%;
+            border-radius: 12px;
+            margin: 1rem 0;
+        }
+        .filter-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <a href="eman.html"><img src="../assets/icons/back-arrow.svg" alt="Back"></a>
+                <h1>Pickup Requests</h1>
+            </div>
+        </header>
+        
+        <main class="dashboard-main">
+            <div class="glass-card">
+                <div class="filter-controls">
+                    <select class="secondary-button">
+                        <option>All Requests</option>
+                        <option>Near Me</option>
+                        <option>High Value</option>
+                    </select>
+                    <button class="primary-button">Refresh</button>
+                </div>
+                
+                <div id="emanMap"></div>
+                
+                <div class="pickup-list">
+                    <div class="pickup-item">
+                        <div class="pickup-info">
+                            <h3>#EW12348 - Sai Baba Colony</h3>
+                            <p>2 Laptops, 5 Phones • 2.5km away</p>
+                            <p><span class="status status-pending">Unclaimed</span> • ₹150</p>
+                        </div>
+                        <button class="primary-button accept-pickup">Accept</button>
+                    </div>
+                    
+                    <div class="pickup-item">
+                        <div class="pickup-info">
+                            <h3>#EW12347 - R.S. Puram</h3>
+                            <p>1 TV, 2 Monitors • 1.2km away</p>
+                            <p><span class="status status-accepted">Accepted by You</span> • ₹300</p>
+                        </div>
+                        <button class="secondary-button">Navigate</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="eman.js"></script>
+    <script>
+        // Initialize E-Man Map
+        function initEmanMap() {
+            const map = L.map('emanMap').setView([11.0168, 76.9558], 13);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap'
+            }).addTo(map);
+            
+            // Current location marker
+            L.circleMarker([11.0168, 76.9558], {
+                radius: 8,
+                fillColor: "#4CAF50",
+                color: "#fff",
+                weight: 2
+            }).addTo(map).bindPopup("Your Location");
+            
+            // Pickup request markers
+            const pickups = [
+                { id: 12348, lat: 11.018, lng: 76.962, items: "2 Laptops, 5 Phones" },
+                { id: 12347, lat: 11.015, lng: 76.958, items: "1 TV, 2 Monitors" }
+            ];
+            
+            pickups.forEach(p => {
+                L.marker([p.lat, p.lng], {
+                    icon: L.divIcon({
+                        className: 'pickup-marker',
+                        html: `<div>#${p.id}</div>`,
+                        iconSize: [40, 40]
+                    })
+                }).addTo(map).bindPopup(`<b>#EW${p.id}</b><br>${p.items}`);
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', initEmanMap);
+    </script>
+</body>
+</html>

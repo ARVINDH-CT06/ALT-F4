@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Zer0e-Waste</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../auth/signup.css">
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-card glass-card">
+            <div class="back-button" onclick="window.history.back()">
+                <img src="download.png" alt="Back">
+            </div>
+            
+            <h2>Create Your Account</h2>
+            <p>Join Zer0e-Waste to start your sustainable e-waste journey</p>
+            
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="userType">I am a:</label>
+                    <select id="userType" name="userType" required>
+                        <option value="">Select user type</option>
+                        <option value="client">Client</option>
+                        <option value="eman">E-Man</option>
+                    </select>
+                </div>
+                
+                <div class="form-group optional-group" id="shopAddressGroup">
+                    <label for="shopAddress">Shop Address (Optional for E-Men)</label>
+                    <textarea id="shopAddress" name="shopAddress" rows="3"></textarea>
+                </div>
+                
+                <button type="submit" class="primary-button">Create Account</button>
+            </form>
+            
+            <div class="login-link">
+                Already have an account? <a href="#">Log In</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../auth/signup.js"></script>
+</body>
+</html>

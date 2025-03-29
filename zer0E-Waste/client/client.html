@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard | Zer0e-Waste</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="client.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <img src="a566c2f9-b53b-45a2-a2fd-89b94856add5.jpg" alt="Logo" class="header-logo">
+                <h1>Client Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <div class="profile-icon" id="profileDropdownBtn">
+                    <img src="1afd5012-e622-49b6-806f-905e932829a7.jpg" alt="Profile">
+                </div>
+                <div class="dropdown-menu" id="profileDropdown">
+                    <a href="#">My Profile</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </header>
+        
+        <main class="dashboard-main">
+            <div class="feature-grid">
+                <div class="feature-card" onclick="navigateToFeature('pickup')">
+                    <div class="feature-icon">
+                        <img src="6a3ba210-5363-4c06-9fad-60f7583c16d2.jpg" alt="Pickup">
+                    </div>
+                    <h3>Pickup Request</h3>
+                    <p>Schedule e-waste collection at your location</p>
+                </div>
+                
+                <div class="feature-card" onclick="navigateToFeature('facility')">
+                    <div class="feature-icon">
+                        <img src="829eb5e9-6f32-4301-bcad-1595a318fdfa.jpg" alt="Facility">
+                    </div>
+                    <h3>Facility Locator</h3>
+                    <p>Find nearby e-waste recycling centers</p>
+                </div>
+                
+                <div class="feature-card" onclick="navigateToFeature('ewaste')">
+                    <div class="feature-icon">
+                        <img src="c60ee296-f293-434d-880d-46bb3fa8af2e.jpg" alt="E-Waste">
+                    </div>
+                    <h3>E-Waste Guide</h3>
+                    <p>Learn proper e-waste disposal methods</p>
+                </div>
+                
+                <div class="feature-card" onclick="navigateToFeature('feedback')">
+                    <div class="feature-icon">
+                        <img src="7352abab-1b29-4817-8388-8460a340f301.jpg" alt="Feedback">
+                    </div>
+                    <h3>Feedback</h3>
+                    <p>Share your experience with us</p>
+                </div>
+                
+                <div class="feature-card" onclick="navigateToFeature('notify')">
+                    <div class="feature-icon">
+                        <img src="884a9e83-30bc-4e37-9a44-93e2adfdd48d.jpg" alt="Notifications">
+                    </div>
+                    <h3>Notifications</h3>
+                    <p>Local recycling events and initiatives</p>
+                </div>
+                
+                <div class="feature-card" onclick="navigateToFeature('myexx')">
+                    <div class="feature-icon">
+                        <img src="d0d494cc-0f30-4cda-aa11-41227bcbfb0a.jpg" alt="MyExx">
+                    </div>
+                    <h3>MyExx</h3>
+                    <p>Connect with the e-waste community</p>
+                </div>
+                
+                <div class="feature-card" onclick="navigateToFeature('donate')">
+                    <div class="feature-icon">
+                        <img src="donate.jpg"  alt="Donate">
+                    </div>
+                    <h3>Donate</h3>
+                    <p>Give your e-waste a second life</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="client.js"></script>
+    <link rel="stylesheet" href="client.css">
+</body>
+</html>

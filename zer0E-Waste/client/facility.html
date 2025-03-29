@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facility Locator | Zer0e-Waste</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+            border-radius: 12px;
+            margin: 1rem 0;
+        }
+        .facility-filter {
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <a href="client.html"><img src="../assets/icons/back-arrow.svg" alt="Back"></a>
+                <h1>Facility Locator</h1>
+            </div>
+        </header>
+        
+        <main class="dashboard-main">
+            <div class="glass-card">
+                <h2>Find E-Waste Facilities in Coimbatore</h2>
+                <div class="facility-filter">
+                    <select id="facilityType" class="secondary-button">
+                        <option value="all">All Facilities</option>
+                        <option value="recycling">Recycling Centers</option>
+                        <option value="dropoff">Drop-off Points</option>
+                        <option value="buyback">Buyback Centers</option>
+                    </select>
+                </div>
+                <div id="map"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // Sample facilities data (Coimbatore locations)
+        const facilities = [
+            { name: "GreenTech Recycling", lat: 11.018, lng: 76.963, type: "recycling" },
+            { name: "EcoDrop Center", lat: 11.016, lng: 76.958, type: "dropoff" },
+            { name: "TechRespawn Buyback", lat: 11.022, lng: 76.955, type: "buyback" },
+            { name: "Urban Eco Center", lat: 11.012, lng: 76.960, type: "recycling" },
+            { name: "QuickDrop Point", lat: 11.020, lng: 76.950, type: "dropoff" }
+        ];
+
+        function initMap() {
+            const map = L.map('map').setView([11.0168, 76.9558], 13);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+            
+            // Add facility markers
+            facilities.forEach(facility => {
+                const iconColor = facility.type === 'recycling' ? 'green' : 
+                                facility.type === 'dropoff' ? 'blue' : 'orange';
+                
+                const icon = L.divIcon({
+                    className: `facility-marker ${facility.type}`,
+                    html: `<div style="background:${iconColor}">${facility.name.charAt(0)}</div>`,
+                    iconSize: [30, 30]
+                });
+                
+                L.marker([facility.lat, facility.lng], { icon })
+                    .addTo(map)
+                    .bindPopup(`<b>${facility.name}</b><br>Type: ${facility.type}`);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initMap);
+    </script>
+</body>
+</html>

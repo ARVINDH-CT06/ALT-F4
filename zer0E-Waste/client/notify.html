@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications | Zer0e-Waste</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .notification {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+        .notification.unread {
+            background: #f0f7f0;
+        }
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <a href="client.html"><img src="../assets/icons/back-arrow.svg" alt="Back"></a>
+                <h1>Notifications</h1>
+            </div>
+        </header>
+        
+        <main class="dashboard-main">
+            <div class="glass-card">
+                <h2>Recent Updates</h2>
+                
+                <div class="notification unread">
+                    <div class="notification-icon">♻</div>
+                    <div>
+                        <h4>Recycling Drive This Weekend</h4>
+                        <p>Join us at Gandhipuram Park for a community e-waste collection event</p>
+                        <small>2 hours ago</small>
+                    </div>
+                </div>
+                
+                <div class="notification">
+                    <div class="notification-icon">🔄</div>
+                    <div>
+                        <h4>Your Pickup is Scheduled</h4>
+                        <p>E-Man Ramesh will arrive tomorrow between 2-4 PM</p>
+                        <small>1 day ago</small>
+                    </div>
+                </div>
+                
+                <div class="notification">
+                    <div class="notification-icon">🏆</div>
+                    <div>
+                        <h4>You Earned 50 Eco-Points!</h4>
+                        <p>Thank you for recycling 5kg of e-waste this month</p>
+                        <small>3 days ago</small>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

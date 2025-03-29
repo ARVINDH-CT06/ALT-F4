@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyExx Community | Zer0e-Waste</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .post-container {
+            margin-bottom: 2rem;
+        }
+        
+        .post-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .post-user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+        }
+        
+        .post-user-info h4 {
+            margin: 0;
+            color: var(--dark-color);
+        }
+        
+        .post-user-info p {
+            margin: 0;
+            font-size: 0.8rem;
+            color: #777;
+        }
+        
+        .post-content {
+            margin-bottom: 1rem;
+        }
+        
+        .post-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            max-height: 400px;
+            object-fit: cover;
+        }
+        
+        .post-actions {
+            display: flex;
+            gap: 1rem;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+        
+        .post-action {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .post-action:hover {
+            color: var(--primary-color);
+        }
+        
+        .new-post-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .new-post-textarea {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            resize: none;
+            min-height: 100px;
+        }
+        
+        .post-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .post-button:hover {
+            background: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <a href="client.html"><img src="3401.png" alt="Back" style="width: 24px; margin-right: 1rem;"></a>
+                <h1>MyExx Community</h1>
+            </div>
+            <div class="header-right">
+                <div class="profile-icon" id="profileDropdownBtn">
+                    <img src="../assets/icons/profile-icon.svg" alt="Profile">
+                </div>
+            </div>
+        </header>
+        
+        <main class="dashboard-main">
+            <div class="new-post-card glass-card">
+                <h3 style="margin-bottom: 1rem;">Create New Post</h3>
+                <textarea class="new-post-textarea" placeholder="Share your e-waste items or thoughts with the community..."></textarea>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <input type="file" id="postImage" accept="image/*" style="display: none;">
+                        <label for="postImage" class="secondary-button" style="padding: 8px 16px; cursor: pointer;">
+                            <img src="../assets/icons/image-icon.svg" alt="Add Image" style="width: 20px; margin-right: 5px;">
+                            Add Image
+                        </label>
+                    </div>
+                    <button class="post-button">Post</button>
+                </div>
+            </div>
+            
+            <div class="post-container">
+                <div class="post-card glass-card">
+                    <div class="post-header">
+                        <img src="../assets/images/user1.jpg" alt="User" class="post-user-avatar">
+                        <div class="post-user-info">
+                            <h4>Rahul Sharma</h4>
+                            <p>2 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Cleaning out my old electronics. Have 2 laptops and 3 mobile phones in working condition. Anyone interested before I schedule a pickup?</p>
+                        <img src="../assets/images/ewaste1.jpg" alt="E-Waste" class="post-image">
+                    </div>
+                    <div class="post-actions">
+                        <div class="post-action like-action">
+                            <img src="../assets/icons/like-icon.svg" alt="Like" style="width: 20px;">
+                            <span>42 Likes</span>
+                        </div>
+                        <div class="post-action comment-action">
+                            <img src="../assets/icons/comment-icon.svg" alt="Comment" style="width: 20px;">
+                            <span>8 Comments</span>
+                        </div>
+                        <div class="post-action share-action">
+                            <img src="../assets/icons/share-icon.svg" alt="Share" style="width: 20px;">
+                            <span>Share</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="post-card glass-card">
+                    <div class="post-header">
+                        <img src="../assets/images/user2.jpg" alt="User" class="post-user-avatar">
+                        <div class="post-user-info">
+                            <h4>Priya Patel</h4>
+                            <p>1 day ago</p>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Donated my old computer to a local school through Zer0e-Waste. They were so happy to receive it! ♻️💚</p>
+                        <img src="../assets/images/donation1.jpg" alt="Donation" class="post-image">
+                    </div>
+                    <div class="post-actions">
+                        <div class="post-action like-action">
+                            <img src="../assets/icons/like-icon.svg" alt="Like" style="width: 20px;">
+                            <span>87 Likes</span>
+                        </div>
+                        <div class="post-action comment-action">
+                            <img src="../assets/icons/comment-icon.svg" alt="Comment" style="width: 20px;">
+                            <span>15 Comments</span>
+                        </div>
+                        <div class="post-action share-action">
+                            <img src="../assets/icons/share-icon.svg" alt="Share" style="width: 20px;">
+                            <span>Share</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="post-card glass-card">
+                    <div class="post-header">
+                        <img src="../assets/images/user3.jpg" alt="User" class="post-user-avatar">
+                        <div class="post-user-info">
+                            <h4>Arjun Kumar</h4>
+                            <p>3 days ago</p>
+                        </div>
+                    </div>
+                    <div class="post-content

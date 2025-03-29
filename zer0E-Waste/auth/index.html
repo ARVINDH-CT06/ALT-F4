@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zer0e-Waste | Sustainable E-Waste Management</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional index-specific styles */
+        .hero-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(255, 255, 255, 0.3) 100%);
+            border-radius: 20px;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #2E7D32, #4CAF50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 50%;
+        }
+        
+        .app-screenshot {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .app-screenshot:hover {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .interface-selector {
+                flex-direction: column;
+            }
+            
+            .selector-card {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Hero Section -->
+        <section class="hero-section glass-card">
+            <img src="dec47332-2c75-445c-863c-4baf6bd2d852.jpg" alt="Zer0e-Waste Logo" class="logo" style="width: 120px;">
+            <h1>Zer0e-Waste</h1>
+            <p class="subtitle">Connecting you to sustainable e-waste solutions in Coimbatore</p>
+            
+            <div class="app-screenshots" style="display: flex; justify-content: center; gap: 2rem; margin: 2rem 0;">
+                <img src="e40e78c5-6f9e-4c0f-87c9-18488c40d567.jpg" alt="App Screenshot" class="app-screenshot">
+                <img src="bacf21d2-27d4-47af-b6e5-bfb51c3d11bb.jpg" alt="App Screenshot" class="app-screenshot" style="margin-top: 2rem;">
+            </div>
+        </section>
+        
+        <!-- Main Interface Selector -->
+        <div class="interface-selector">
+            <div class="selector-card client-card" onclick="navigateTo('client')">
+                <div class="card-content">
+                    <div class="feature-icon">
+                        <img src="80239d38-bde1-4185-844c-3b9d5fa6f247.jpg" alt="Client" style="width: 40px;">
+                    </div>
+                    <h2>I'm a Client</h2>
+                    <p>Request pickups, find facilities, and connect with the community</p>
+                
+                </div>
+            </div>
+            
+            <div class="selector-card eman-card" onclick="navigateTo('eman')">
+                <div class="card-content">
+                    <div class="feature-icon">
+                        <img src="91ad0ce4-9c68-4209-b4dc-041400a19d3b.jpg" alt="E-Man" style="width: 40px;">
+                    </div>
+                    <h2>I'm an E-Man</h2>
+                    <p>Manage pickups and contribute to e-waste solutions</p>
+                  
+                </div>
+            </div>
+        </div>
+        
+        <!-- Key Features -->
+        <section style="margin-top: 5rem;">
+            <h2 style="text-align: center; margin-bottom: 2rem;">How Zer0e-Waste Works</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="download5.png" alt="Schedule" style="width: 30px;">
+                    </div>
+                    <h3>Schedule Pickups</h3>
+                    <p>Request e-waste collection from your doorstep with our easy scheduling system</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="003fa9ca-d3ae-4deb-8bab-db212a77e4aa.jpg" alt="Track" style="width: 30px;">
+                    </div>
+                    <h3>Track Collectors</h3>
+                    <p>Real-time tracking of your assigned E-Man and collection status</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="download1.png" alt="Recycle" style="width: 30px;">
+                    </div>
+                    <h3>Find Facilities</h3>
+                    <p>Locate nearby recycling centers and drop-off points</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="images.png" alt="Community" style="width: 30px;">
+                    </div>
+                    <h3>Join Community</h3>
+                    <p>Connect with others through our MyExx social platform</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Call to Action -->
+        <div style="text-align: center; margin: 4rem 0;">
+            <h2>Ready to make a difference?</h2>
+            <p>Join hundreds of Coimbatore residents managing e-waste responsibly</p>
+            <button class="primary-button" onclick="navigateTo('signup')" style="margin-top: 1.5rem; padding: 12px 30px;">Sign Up Now</button>
+        </div>
+    </div>
+
+    <script>
+        // Combined navigation and initialization script
+        function navigateTo(page) {
+            // Try multiple possible paths for signup
+            if (page === 'signup') {
+                const paths = [
+                    'auth/signup.html',
+                    'signup.html',
+                    'client/signup.html'
+                ];
+                
+                // Check which path exists
+                let resolved = false;
+                paths.forEach(path => {
+                    if (!resolved) {
+                        fetch(path, { method: 'HEAD' })
+                            .then(res => {
+                                if (res.ok) {
+                                    window.location.href = path;
+                                    resolved = true;
+                                }
+                            })
+                            .catch(() => {});
+                    }
+                });
+                
+                // If no path worked after 1 second, show error
+                setTimeout(() => {
+                    if (!resolved) {
+                        alert('Could not find signup page. Please check the file exists.');
+                        console.error('Signup page not found at any of:', paths);
+                    }
+                }, 1000);
+            }
+            // Standard navigation for other pages
+            else if (page === 'client') {
+                window.location.href = 'client/client.html';
+            } 
+            else if (page === 'eman') {
+                window.location.href = 'eman/eman.html';
+            }
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate feature cards
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `all 0.5s ease ${index * 0.1}s`;
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100);
+            });
+            
+            // Ensure signup button works
+            const signupBtn = document.querySelector('.primary-button');
+            if (signupBtn) {
+                signupBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navigateTo('signup.html');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

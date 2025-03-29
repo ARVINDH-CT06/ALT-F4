@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Man Dashboard | Zer0e-Waste</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="eman.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <img src="../assets/images/zer0e-logo-small.png" alt="Zer0e-Waste Logo" class="header-logo">
+                <h1>E-Man Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <div class="profile-icon" id="profileDropdownBtn">
+                    <img src="../assets/icons/eman-profile-icon.svg" alt="Profile">
+                </div>
+                <div class="dropdown-menu" id="profileDropdown">
+                    <a href="#"><img src="../assets/icons/profile-icon.svg" alt=""> My Profile</a>
+                    <a href="#"><img src="../assets/icons/earnings-icon.svg" alt=""> Earnings</a>
+                    <a href="#"><img src="../assets/icons/settings-icon.svg" alt=""> Settings</a>
+                    <a href="#"><img src="../assets/icons/logout-icon.svg" alt=""> Logout</a>
+                </div>
+            </div>
+        </header>
+        
+        <main class="dashboard-main">
+            <!-- Stats Overview -->
+            <div class="eman-stats glass-card">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <img src="../assets/icons/pickup-icon.svg" alt="Pickups">
+                    </div>
+                    <div>
+                        <h3>Today's Pickups</h3>
+                        <p class="stat-value">5</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <img src="../assets/icons/complete-icon.svg" alt="Completed">
+                    </div>
+                    <div>
+                        <h3>Completed</h3>
+                        <p class="stat-value">3</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <img src="../assets/icons/earnings-icon.svg" alt="Earnings">
+                    </div>
+                    <div>
+                        <h3>Today's Earnings</h3>
+                        <p class="stat-value">₹850</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button class="action-button primary" onclick="navigateTo('pickups')">
+                    <img src="../assets/icons/view-pickups-icon.svg" alt="View Pickups">
+                    <span>View Pickups</span>
+                </button>
+                <button class="action-button secondary" onclick="navigateTo('availability')">
+                    <img src="../assets/icons/availability-icon.svg" alt="Set Availability">
+                    <span>Set Availability</span>
+                </button>
+            </div>
+            
+            <!-- Feature Grid -->
+            <div class="feature-grid">
+                <div class="feature-card" onclick="navigateTo('pickups')">
+                    <div class="feature-icon">
+                        <img src="../assets/icons/pickup-icon.svg" alt="Pickups">
+                    </div>
+                    <h3>Pickup Requests</h3>
+                    <p>View and accept new pickup requests</p>
+                    <span class="badge new">3 New</span>
+                </div>
+                
+                <div class="feature-card" onclick="navigateTo('myexx')">
+                    <div class="feature-icon">
+                        <img src="../assets/icons/community-icon.svg" alt="Community">
+                    </div>
+                    <h3>MyExx Community</h3>
+                    <p>Connect with clients</p>
+                </div>
+                
+                <div class="feature-card" onclick="navigateTo('ewaste')">
+                    <div class="feature-icon">
+                        <img src="../assets/icons/guide-icon.svg" alt="Guide">
+                    </div>
+                    <h3>E-Waste Guide</h3>
+                    <p>Proper handling procedures</p>
+                </div>
+                
+                <div class="feature-card" onclick="navigateTo('earnings')">
+                    <div class="feature-icon">
+                        <img src="../assets/icons/earnings-icon.svg" alt="Earnings">
+                    </div>
+                    <h3>Earnings</h3>
+                    <p>View your payments</p>
+                </div>
+            </div>
+            
+            <!-- Active Pickups Section -->
+            <div class="section-header">
+                <h2>Your Active Pickups</h2>
+                <a href="pickups.html" class="view-all">View All</a>
+            </div>
+            
+            <div class="pickup-list">
+                <div class="pickup-item">
+                    <div class="pickup-info">
+                        <div class="pickup-meta">
+                            <span class="pickup-id">#EW12458</span>
+                            <span class="pickup-distance">2.3 km away</span>
+                        </div>
+                        <h3>R.S. Puram</h3>
+                        <p>2 Laptops, 5 Mobile Phones</p>
+                        <div class="pickup-time">
+                            <img src="../assets/icons/clock-icon.svg" alt="Time">
+                            <span>Due by 3:00 PM</span>
+                        </div>
+                    </div>
+                    <div class="pickup-actions">
+                        <button class="status-badge in-progress">In Progress</button>
+                        <button class="action-button navigate" onclick="navigateToPickup(12458)">
+                            <img src="../assets/icons/navigate-icon.svg" alt="Navigate">
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="pickup-item">
+                    <div class="pickup-info">
+                        <div class="pickup-meta">
+                            <span class="pickup-id">#EW12462</span>
+                            <span class="pickup-distance">3.1 km away</span>
+                        </div>
+                        <h3>Gandhipuram</h3>
+                        <p>1 TV, 2 Monitors</p>
+                        <div class="pickup-time">
+                            <img src="../assets/icons/clock-icon.svg" alt="Time">
+                            <span>Due by 5:30 PM</span>
+                        </div>
+                    </div>
+                    <div class="pickup-actions">
+                        <button class="status-badge accepted">Accepted</button>
+                        <button class="action-button navigate" onclick="navigateToPickup(12462)">
+                            <img src="../assets/icons/navigate-icon.svg" alt="Navigate">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="eman.js"></script>
+    <script>
+        function navigateTo(page) {
+            const pages = {
+                'pickups': 'pickups.html',
+                'availability': 'availability.html',
+                'myexx': 'myexx.html',
+                'ewaste': 'ewaste.html',
+                'earnings': 'earnings.html'
+            };
+            
+            if (pages[page]) {
+                window.location.href = pages[page];
+            }
+        }
+        
+        function navigateToPickup(pickupId) {
+            // In a real app, this would navigate to specific pickup
+            window.location.href = `pickup-details.html?id=${pickupId}`;
+        }
+        
+        // Initialize the dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate feature cards
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+            
+            // Initialize profile dropdown
+            const profileBtn = document.getElementById('profileDropdownBtn');
+            if (profileBtn) {
+                profileBtn.addEventListener('click', function() {
+                    const dropdown = document.getElementById('profileDropdown');
+                    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                });
+            }
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('#profileDropdownBtn')) {
+                    const dropdown = document.getElementById('profileDropdown');
+                    if (dropdown) dropdown.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
